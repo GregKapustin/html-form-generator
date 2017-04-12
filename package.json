@@ -1,0 +1,23 @@
+{
+  "name": "html-form-generator",
+  "version": "1.0.0",
+  "description": "Returns html forms parts from formatted objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GregKapustin/html-form-generator.git"
+  },
+  "keywords": [
+    "html",
+    "forms"
+  ],
+  "author": "gregkapustin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GregKapustin/html-form-generator/issues"
+  },
+  "homepage": "https://github.com/GregKapustin/html-form-generator#readme"
+}

@@ -1,0 +1,31 @@
+<% if(typeof prefix !== 'undefined' && prefix.length) { %>
+<%= prefix %>
+<% } %>
+
+<% if(typeof label !== 'undefined' && label.length) { %>
+<label><%= label %>
+<% } %>
+    <% if(typeof options !== 'undefined' && _.keys(options).length) {
+        _.forEach(options, function(text, value) { %>
+        <input
+            type="checkbox"
+            class="<%= typeof classes !== 'undefined' && classes.length ? classes.join(' ') : '' %>"
+            name="<%= typeof name !== 'undefined' && name.length ? name : '' %>" 
+            value="<%= value %>" 
+            <%= typeof defaultValue !== 'undefined' && defaultValue.indexOf(value) >= 0 ? 'checked' : '' %> 
+            <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
+                _.forEach(attributes, function(value, attribute) { %>
+                <%= attribute %>="<%= value %>" 
+            <% });
+            } %>
+        ><%= text %>
+    <% });
+    } %>
+    
+<% if(typeof label !== 'undefined' && label.length) { %>
+</label>
+<% } %>
+
+<% if(typeof suffix !== 'undefined' && suffix.length) { %>
+<%= suffix %>
+<% } %>

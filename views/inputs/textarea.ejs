@@ -1,0 +1,25 @@
+<% if(typeof prefix !== 'undefined' && prefix.length) { %>
+<%= prefix %>
+<% } %>
+
+<% if(typeof label !== 'undefined' && label.length) { %>
+<label><%= label %>
+<% } %>
+    <textarea
+        class="<%= typeof classes !== 'undefined' && classes.length ? classes.join(' ') : '' %>"
+        name="<%= typeof name !== 'undefined' && name.length ? name : '' %>" 
+        <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
+            _.forEach(attributes, function(value, attribute) { %>
+            <%= attribute %>="<%= value %>" 
+        <% });
+        } %>
+    >
+    </textarea>
+    
+<% if(typeof label !== 'undefined' && label.length) { %>
+</label>
+<% } %>
+
+<% if(typeof suffix !== 'undefined' && suffix.length) { %>
+<%= suffix %>
+<% } %>
