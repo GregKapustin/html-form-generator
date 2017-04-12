@@ -1,6 +1,6 @@
 {
   "name": "html-form-generator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Returns html forms parts from formatted objects",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,21 @@
     "html",
     "forms"
   ],
-  "author": "gregkapustin",
+  "author": {
+    "name": "Gregory Kapustin",
+    "email": "gregory@kapustin.fr"
+  },
+  "dependencies": {
+    "lodash": "4.x.x",
+    "ejs": "2.x.x"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GregKapustin/html-form-generator/issues"
   },
-  "homepage": "https://github.com/GregKapustin/html-form-generator#readme"
+  "homepage": "https://github.com/GregKapustin/html-form-generator#readme",
+  "_npmUser": {
+    "name": "gregkapustin",
+    "email": "gregory@kapustin.fr"
+  }
 }
