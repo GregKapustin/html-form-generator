@@ -74,6 +74,7 @@ formG.generate([
 
 * Add an html form that help generate the array of objects, to be used in a backoffice for example (_as inspired from [Drupal Webform module](https://www.drupal.org/project/webform)_)
 * Generate a whole form from object
+* Handle fieldsets
 * Add validators
 * Add interactive inputs like :
   * Google Address input field
