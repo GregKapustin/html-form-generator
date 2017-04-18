@@ -1,6 +1,7 @@
 var ejs = require('ejs');
 var _ = require('lodash');
 var Promise = require('bluebird');
+var config = require('./config.json');
 
 module.exports = {
     generate: function(objs, separator) {
@@ -30,5 +31,34 @@ module.exports = {
         return Promise.all(promises).then(function(strs) {
             return strs.join(separator ? separator : '');
         });
+    },
+    formGeneratorFormGet: function(formGeneratorFormPost, wantString) {
+        return new Promise(function(resolve, reject) {
+            ejs.renderFile(__dirname + '/views/formGeneratorForm/form.ejs', {
+                action: formGeneratorFormPost,
+                wantString: wantString
+            }, {}, function(err, str) {
+                if(err)
+                    reject(err);
+                else
+                    resolve(str);
+            });
+        });
+    },
+    formGeneratorFormPost: function(postData) {
+        var that = this;
+        var formGeneratorFormPostPost = require(__dirname + '/lib/formGeneratorFormPost.js');
+        var objs = formGeneratorFormPostPost.post(postData);
+        if(postData.wantString == 'true') {
+            return that.generate(objs, postData.formGeneratorSeparator).then(function(str) {
+                return str;
+            }).catch(function(err) {
+                throw err;
+            });
+        } else {
+            return new Promise(function(resolve, reject) {
+                resolve(objs);
+            });
+        }
     }
 };
