@@ -14,6 +14,7 @@
             value="<%= value %>" 
             <%= typeof defaultValue !== 'undefined' && defaultValue.indexOf(value) >= 0 ? 'checked' : '' %> 
             <%= typeof disabled !== 'undefined' && disabled ? 'disabled' : '' %> 
+            <%= typeof required !== 'undefined' && required ? 'required' : '' %> 
             <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
                 _.forEach(attributes, function(value, attribute) { %>
                 <%= attribute %>="<%= value %>" 
