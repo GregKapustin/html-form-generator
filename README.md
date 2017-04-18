@@ -22,7 +22,8 @@ formG.generate([
             size: "60",
             style: "background: red;"
         },
-        classes: ["foo", "bar"]
+        classes: ["foo", "bar"],
+        disabled: true
     },
     {
         type: "select",
@@ -69,6 +70,7 @@ formG.generate([
 * **classes**: an array of classes that will be added to the tag.
 * **prefix**: an html string that will be placed before the `<label>`tag.
 * **suffix**: an html string that will be placed after the `</label>`tag.
+* **disabled**: a boolean disabling the input if true
 
 ## Roadmap
 

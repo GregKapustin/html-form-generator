@@ -13,6 +13,7 @@
             name="<%= typeof name !== 'undefined' && name.length ? name : '' %>" 
             value="<%= value %>" 
             <%= typeof defaultValue !== 'undefined' && defaultValue.indexOf(value) >= 0 ? 'checked' : '' %> 
+            <%= typeof disabled !== 'undefined' && disabled ? 'disabled' : '' %> 
             <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
                 _.forEach(attributes, function(value, attribute) { %>
                 <%= attribute %>="<%= value %>" 

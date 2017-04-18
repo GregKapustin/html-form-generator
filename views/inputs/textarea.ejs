@@ -8,6 +8,7 @@
     <textarea
         class="<%= typeof classes !== 'undefined' && classes.length ? classes.join(' ') : '' %>"
         name="<%= typeof name !== 'undefined' && name.length ? name : '' %>" 
+        <%= typeof disabled !== 'undefined' && disabled ? 'disabled' : '' %> 
         <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
             _.forEach(attributes, function(value, attribute) { %>
             <%= attribute %>="<%= value %>" 

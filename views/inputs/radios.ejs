@@ -11,6 +11,7 @@
             type="radio"
             class="<%= typeof classes !== 'undefined' && classes.length ? classes.join(' ') : '' %>"
             name="<%= typeof name !== 'undefined' && name.length ? name : '' %>" 
+            <%= typeof disabled !== 'undefined' && disabled ? 'disabled' : '' %> 
             value="<%= value %>" 
             <%= typeof defaultValue !== 'undefined' && defaultValue.indexOf(value) >= 0 ? 'checked' : '' %> 
             <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
