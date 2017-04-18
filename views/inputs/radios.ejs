@@ -1,9 +1,9 @@
 <% if(typeof prefix !== 'undefined' && prefix.length) { %>
-<%= prefix %>
+<%- prefix %>
 <% } %>
 
 <% if(typeof label !== 'undefined' && label.length) { %>
-<label><%= label %>
+<label><%- label %>
 <% } %>
     <% if(typeof options !== 'undefined' && _.keys(options).length) {
         _.forEach(options, function(text, value) { %>
@@ -28,5 +28,5 @@
 <% } %>
 
 <% if(typeof suffix !== 'undefined' && suffix.length) { %>
-<%= suffix %>
+<%- suffix %>
 <% } %>

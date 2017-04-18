@@ -1,9 +1,9 @@
 <% if(typeof prefix !== 'undefined' && prefix.length) { %>
-<%= prefix %>
+<%- prefix %>
 <% } %>
 
 <% if(typeof label !== 'undefined' && label.length) { %>
-<label><%= label %>
+<label><%- label %>
 <% } %>
     <select
         class="<%= typeof classes !== 'undefined' && classes.length ? classes.join(' ') : '' %>"
@@ -30,5 +30,5 @@
 <% } %>
 
 <% if(typeof suffix !== 'undefined' && suffix.length) { %>
-<%= suffix %>
+<%- suffix %>
 <% } %>
