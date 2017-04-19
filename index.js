@@ -1,7 +1,6 @@
 var ejs = require('ejs');
 var _ = require('lodash');
 var Promise = require('bluebird');
-var config = require('./config.json');
 
 module.exports = {
     generate: function(objs, separator) {
