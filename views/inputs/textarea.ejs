@@ -10,6 +10,7 @@
         name="<%= typeof name !== 'undefined' && name.length ? name : '' %>" 
         <%= typeof disabled !== 'undefined' && disabled ? 'disabled' : '' %> 
         <%= typeof required !== 'undefined' && required ? 'required' : '' %> 
+        value="<%= typeof defaultValue !== 'undefined' && defaultValue ? defaultValue : '' %>" 
         <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
             _.forEach(attributes, function(value, attribute) { %>
             <%= attribute %>="<%= value %>" 

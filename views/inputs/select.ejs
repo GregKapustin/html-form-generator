@@ -21,7 +21,7 @@
             <option 
                 value="<%= value %>" 
                 <%= typeof defaultValue !== 'undefined' && defaultValue.indexOf(value) >= 0 ? 'selected' : '' %> 
-            ><%= text %></option>
+            ><%- text %></option>
         <% });
         } %>
     </select>
