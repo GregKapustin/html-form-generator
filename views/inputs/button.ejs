@@ -1,0 +1,29 @@
+<% if(typeof prefix !== 'undefined' && prefix.length) { %>
+<%- prefix %>
+<% } %>
+
+<% if(typeof label !== 'undefined' && label.length) { %>
+<label><%- label %>
+<% } %>
+    <button
+        type="<%= type %>"
+        class="<%= typeof classes !== 'undefined' && classes.length ? classes.join(' ') : '' %>" 
+        <%= typeof disabled !== 'undefined' && disabled ? 'disabled' : '' %> 
+        <%= typeof required !== 'undefined' && required ? 'required' : '' %> 
+        value="<%= typeof defaultValue !== 'undefined' && defaultValue ? defaultValue : '' %>" 
+        <% if(typeof attributes !== 'undefined' && _.keys(attributes).length) {
+            _.forEach(attributes, function(value, attribute) { %>
+            <%= attribute %>="<%= value %>" 
+        <% });
+        } %>
+    >
+        <%= typeof name !== 'undefined' && name.length ? name : '' %>
+    </button>
+    
+<% if(typeof label !== 'undefined' && label.length) { %>
+</label>
+<% } %>
+
+<% if(typeof suffix !== 'undefined' && suffix.length) { %>
+<%- suffix %>
+<% } %>

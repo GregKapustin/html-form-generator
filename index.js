@@ -3,7 +3,7 @@ var _ = require('lodash');
 var Promise = require('bluebird');
 
 module.exports = {
-    generate: function(objs, separator) {
+    generate: function(objs, separator, method, action, id) {
         if(!Array.isArray(objs)) {
             objs = [objs];
         }
@@ -17,7 +17,9 @@ module.exports = {
             }
             var template = ["checkboxes", "radios", "select", "text", "textarea"].indexOf(obj.type) >= 0 ? 
                 __dirname + '/views/inputs/' + obj.type + '.ejs' :
-                __dirname + '/views/inputs/simple.ejs';
+                    ["button", "submit"].indexOf(obj.type) >= 0 ? 
+                        __dirname + '/views/inputs/button.ejs' :
+                            __dirname + '/views/inputs/simple.ejs';
             promises.push(new Promise(function(resolve, reject) {
                 ejs.renderFile(template, obj, {}, function(err, str){
                     if(err)
@@ -28,7 +30,16 @@ module.exports = {
             }));
         });
         return Promise.all(promises).then(function(strs) {
-            return strs.join(separator ? separator : '');
+            var fields = strs.join(separator ? separator : '');
+            if(method && action) {
+                var idString = id ? ' id="' + id + '"' : '';
+                var form = '<form method="' + method.toUpperCase() + '" action="' + action +'"' + idString + '>'
+                    + fields
+                    + '</form>';
+                return form;
+            } else {
+                return fields;
+            }
         });
     },
     formGeneratorFormGet: function(formGeneratorFormPost, wantString) {

@@ -6,8 +6,13 @@ Inspired from Drupal's [form API](https://api.drupal.org/api/drupal/developer%21
 
 `npm install html-form-generator`
 * For now there is only one method : `generate`.
-* It takes as arguments **an array of spec-formatted objects** and a **separator** (as a string).
-* It returns an **html string of all inputs, separated by the separator**.
+* It generates a form and takes as arguments 
+  * **an array of spec-formatted objects**
+  * a **separator** (as a string)
+  * a **method** (as a string : 'GET', 'POST', etc)
+  * an **action** (as a string : an URL or javascript code)
+  * an **id** (as a string)
+* It returns an **html string of the form with all inputs, separated by the separator**.
 
 ## Example
 
@@ -38,7 +43,11 @@ formG.generate([
         },
         defaultValue: ["b", "c"]
     }
-], '<br/>'
+],
+ '<br/>',
+ 'POST',
+ '/myURL',
+ 'myForm'
 ).then(function(str) {
     // Do what you need with the string
 }).catch(function(err) {
@@ -107,7 +116,7 @@ Of course, you will have to create a route on `/formGeneratorFormPost` to retrie
 ## Roadmap
 
 * ~~Add an html form that help generate the array of objects, to be used in a backoffice for example (_as inspired from [Drupal Webform module](https://www.drupal.org/project/webform)_)~~
-* Generate a whole form from object
+* ~~Generate a whole form from object~~
 * Handle fieldsets
 * Add validators
 * Add interactive inputs like :
