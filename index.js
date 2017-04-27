@@ -42,11 +42,13 @@ module.exports = {
             }
         });
     },
-    formGeneratorFormGet: function(formGeneratorFormPost, wantString) {
+    formGeneratorFormGet: function(formGeneratorFormPost, wantString, values) {
         return new Promise(function(resolve, reject) {
             ejs.renderFile(__dirname + '/views/formGeneratorForm/form.ejs', {
                 action: formGeneratorFormPost,
-                wantString: wantString
+                wantString: wantString,
+                values: values && values.length ? values : [{}],
+                _: _
             }, {}, function(err, str) {
                 if(err)
                     reject(err);

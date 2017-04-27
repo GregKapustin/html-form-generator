@@ -1,48 +1,62 @@
 <form action='<%= action %>' method="POST" class="formGeneratorForm">
-    <fieldset class="field">
-        <span class="fieldType">
-            <label>Type</label>
-            <select name='type_1' onchange='formGeneratorFormChangeType(this);'>
-                <% var types = [
-                    "text", "password",
-                    "textarea",
-                    "select", "checkboxes", "radios",
-                    "date", "datetime-local",
-                    "submit", "reset", "button"
-                ]; 
-                for(i in types) { %>
-                <option value="<%= types[i] %>"><%= types[i].charAt(0).toUpperCase() + types[i].slice(1); %></option>
-                <% }
-                %>
-            </select>
-        </span>
-        <span class="fieldName">
-            <label>Name</label>
-            <input type="text" name="name_1">
-        </span>
-        <span class="fieldLabel">
-            <label>Label</label>
-            <input type="text" name="label_1">
-        </span>
-        <span class="fieldDisabled">
-            <label>Disabled</label>
-            <input type="checkbox" name="disabled_1">
-        </span>
-        <span class="fieldRequired">
-            <label>Required</label>
-            <input type="checkbox" name="required_1">
-        </span>
-        <div class="fieldOptions" style="display: none;">
-            <label>Options</label>
-            <span class="optionPlus" onclick='formGeneratorFormAddOption(this);'>+</span>
-            <div class="optionsOption">
-                <span class="optionNumber">1</span>
-                <input type="text" name="option_1_Value1" class="value" placeholder="value" size="4">&nbsp;:&nbsp;
-                <input type="text" name="option_1_Text1" class="text" placeholder="text" size="10">
-                <input type="checkbox" name="option_1_Selected1" class="selected">&nbsp;selected
+    <% var j = 1;
+    _.forEach(values, function(value) { %>
+        <fieldset class="field">
+            <span class="fieldType">
+                <label>Type</label>
+                <select name='type_<%= j %>' onchange='formGeneratorFormChangeType(this);'>
+                    <% var types = [
+                        "text", "password",
+                        "textarea",
+                        "select", "checkboxes", "radios",
+                        "date", "datetime-local",
+                        "submit", "reset", "button"
+                    ]; 
+                    for(i in types) { %>
+                    <option value="<%= types[i] %>" <%= value && value.type && value.type == types[i] ? 'selected="selected"' : '' %>><%= types[i].charAt(0).toUpperCase() + types[i].slice(1); %></option>
+                    <% }
+                    %>
+                </select>
+            </span>
+            <span class="fieldName">
+                <label>Name</label>
+                <input type="text" name="name_<%= j %>" value="<%= value && value.name ? value.name : '' %>">
+            </span>
+            <span class="fieldLabel">
+                <label>Label</label>
+                <input type="text" name="label_<%= j %>" value="<%= value && value.label ? value.label : '' %>">
+            </span>
+            <span class="fieldDisabled">
+                <label>Disabled</label>
+                <input type="checkbox" name="disabled_<%= j %>" <%= value && value.disabled ? 'checked="checked"' : '' %>>
+            </span>
+            <span class="fieldRequired">
+                <label>Required</label>
+                <input type="checkbox" name="required_<%= j %>" <%= value && value.required ? 'checked="checked"' : '' %>>
+            </span>
+            <div class="fieldOptions" style="display: <%= value && value.type && ['select', 'checkboxes', 'radios'].indexOf(value.type) >= 0 ? 'inherit' : 'none' %>;">
+                <label>Options</label>
+                <span class="optionPlus" onclick='formGeneratorFormAddOption(this);'>+</span>
+                <%
+                if(!value.options || !_.keys(value.options).length) {
+                    value.options = {'':''};
+                }
+                var i = 0;
+                _.forEach(value.options, function(text, val) { %>
+                    <div class="optionsOption">
+                        <span class="optionNumber"><%= i + 1 %></span>
+                        <input type="text" name="option_<%= j %>_Value<%= i + 1 %>" class="value" placeholder="value" size="4" value='<%= val ? val : "" %>'>&nbsp;:&nbsp;
+                        <input type="text" name="option_<%= j %>_Text<%= i + 1 %>" class="text" placeholder="text" size="10" value='<%= text ? text : "" %>'>
+                        <input type="checkbox" name="option_<%= j %>_Selected<%= i + 1 %>" class="selected" <%= val && value.defaultValue && value.defaultValue.length && value.defaultValue.indexOf(val) >= 0 ? 'checked="checked"' : '' %>>&nbsp;selected
+                    </div>
+                <% i++; 
+                }); %>
             </div>
-        </div>
-    </fieldset>
+        </fieldset>
+    <% 
+    j++;
+    }); 
+    %>
     <span class='formGeneratorFormAddField' onclick='formGeneratorFormAddField();'><i>+ Add field</i></span>
     <br/>
     <% if(!wantString) { %><label for='formGeneratorSeparator'>Separator : <input type="text" size="6" name="formGeneratorSeparator"></label><% } %>
