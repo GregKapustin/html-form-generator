@@ -68,8 +68,9 @@
 
 <script>
     function formGeneratorFormAddField() {
-        $(".formGeneratorFormAddField").before($(".formGeneratorForm .field").eq(0).prop("outerHTML"));
-        $(".formGeneratorForm .field").last()/*.reset()*/.find(".fieldOptions").hide();
+        var fieldStr = '<%- include field.ejs %>'; 
+        $(".formGeneratorFormAddField").before(fieldStr);
+        $(".formGeneratorForm .field").last().find(".fieldOptions").hide();
         $(".formGeneratorForm .field").last().find("select, input").each(function() {
             var id = $(".formGeneratorForm .field").length;
             $(this).prop("name", $(this).prop("name").replace(/_\d/, "_" + id));
