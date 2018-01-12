@@ -48,7 +48,7 @@ formG.generate([
  '<br/>',
  'POST',
  '/myURL',
- 'myForm'
+ 'myForm',
  {
    "textfield": "Hello World"
  }
