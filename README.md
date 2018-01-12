@@ -12,6 +12,7 @@ Inspired from Drupal's [form API](https://api.drupal.org/api/drupal/developer%21
   * a **method** (as a string : 'GET', 'POST', etc)
   * an **action** (as a string : an URL or javascript code)
   * an **id** (as a string)
+  * **values** (as an object {_name_: _value_})
 * It returns an **html string of the form with all inputs, separated by the separator**.
 
 ## Example
@@ -48,6 +49,9 @@ formG.generate([
  'POST',
  '/myURL',
  'myForm'
+ {
+   "textfield": "Hello World"
+ }
 ).then(function(str) {
     // Do what you need with the string
 }).catch(function(err) {
