@@ -3,7 +3,7 @@ var _ = require('lodash');
 var Promise = require('bluebird');
 
 module.exports = {
-    generate: function(objs, separator, method, action, id) {
+    generate: function(objs, separator, method, action, id, values) {
         if(!Array.isArray(objs)) {
             objs = [objs];
         }
@@ -12,6 +12,8 @@ module.exports = {
             obj._ = _;
             if(obj.hasOwnProperty("defaultValue") && !Array.isArray(obj.defaultValue)) {
                 obj.defaultValue = [obj.defaultValue];
+            } else if(values && values.hasOwnProperty(obj.name)) {
+                obj.defaultValue = Array.isArray(values[obj.name]) ? values[obj.name] : [values[obj.name]];
             } else if(!obj.hasOwnProperty("defaultValue")) {
                 obj.defaultValue = [];
             }
