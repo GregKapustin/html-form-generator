@@ -116,6 +116,8 @@ Of course, you will have to create a route on `/formGeneratorFormPost` to retrie
     });
 }
 ```
+## Use of HTML Forms
+[HTML Forms](https://www.scaler.com/topics/html/html-forms/) are useful when we want to collect data from someone who visits your website. For instance, when you register/login for services like Amazon, Myntra, or Facebook, you enter information such as Name, Email, and Password into their web/app forms. A web page's contact form displays input boxes and options through HTML markup and CSS.
 
 ## Roadmap
 
